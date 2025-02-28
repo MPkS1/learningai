@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>30-Day AI Assistant Roadmap</title>
+    <style>
+        :root {
+            --primary: #4b2be5;
+            --secondary: #ff6b6b;
+            --dark: #333;
+            --light: #f8f9fa;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), #8466ff);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 1rem;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+        }
+        
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .week-section {
+            padding: 4rem 0;
+        }
+        
+        .week-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .week-header h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .week-header .goal {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .days-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .day-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .day-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .day-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem;
+            font-weight: 600;
+        }
+        
+        .day-content {
+            padding: 1.5rem;
+        }
+        
+        .day-content h4 {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .topic-list {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+        
+        .topic-list li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .topic-list li:before {
+            content: "•";
+            color: var(--primary);
+            font-size: 1.2rem;
+            position: absolute;
+            left: 0;
+        }
+        
+        .day-task {
+            background-color: #f0f0f0;
+            padding: 1rem;
+            border-radius: 5px;
+            border-left: 4px solid var(--warning);
+        }
+        
+        .day-task h5 {
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .day-task h5:before {
+            content: "🎯";
+            margin-right: 0.5rem;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .social-links {
+            display: flex;
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+        
+        .social-links li {
+            margin: 0 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .copyright {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        .next-steps {
+            background-color: #f0f4ff;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .next-steps h2 {
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
+        
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .step-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        
+        .step-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .step-card p {
+            color: #666;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                margin-top: 1rem;
+            }
+            
+            .nav-links li {
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container nav-container">
+            <a href="#" class="logo">AI Roadmap</a>
+            <ul class="nav-links">
+                <li><a href="#week1">Week 1</a></li>
+                <li><a href="#week2">Week 2</a></li>
+                <li><a href="#week3">Week 3</a></li>
+                <li><a href="#week4">Week 4</a></li>
+                <li><a href="#next-steps">Next Steps</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <header>
+        <div class="container hero">
+            <h1>🔥 30-Day Roadmap to Building Your Own AI Assistant Website 🔥</h1>
+            <p>From Beginner to Advanced - No Prior Knowledge Required!</p>
+            <a href="#week1" class="cta-button">Start Your Journey</a>
+        </div>
+    </header>
+    
+    <main>
+        <section id="week1" class="week-section">
+            <div class="container">
+                <div class="week-header">
+                    <h2>✅ Week 1: AI & Python Basics</h2>
+                    <p class="goal">📌 Goal: Understand AI, learn Python, and explore basic ML concepts.</p>
+                </div>
+                
+                <div class="days-grid">
+                    <div class="day-card">
+                        <div class="day-header">Day 1</div>
+                        <div class="day-content">
+                            <h4>Introduction to AI & ML</h4>
+                            <ul class="topic-list">
+                                <li>What is AI? How does it work? (Narrow AI vs. General AI)</li>
+                                <li>Machine Learning vs. Deep Learning</li>
+                                <li>Language Models (GPT, BERT, etc.)</li>
+                            </ul>
+                            <div class="day-task">
+                                <h5>Daily Task</h5>
+                                <p>Watch an AI overview video and write down key learnings.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="day-card">
+                        <div class="day-header">Day 2</div>
+                        <div class="day-content">
+                            <h4>Python Basics</h4>
+                            <ul class="topic-list">
+                                <li>Python syntax, loops, conditions</li>
+                                <li>Functions, lists, dictionaries</li>
+                                <li>Package management (pip, virtualenv)</li>
+                            </ul>
+                            <div class="day-task">
+                                <h5>Daily Task</h5>
+                                <p>Write a Python script to take user input and print a response.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="day-card">
+                        <div class="day-header">Day 3</div>
+                        <div class="day-content">
+                            <h4>Data Structures & Algorithms</h4>
+                            <ul class="topic-list">
+                                <li>Arrays, lists, dictionaries</li>
+                                <li>Sorting and searching algorithms</li>
+                                <li>Big-O complexity basics</li>
+                            </ul>
+                            <div class="day-task">
+                                <h5>Daily Task</h5>
+                                <p>Implement sorting in Python.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="day-card">
+                        <div class="day-header">Day 4</div>
+                        <div class="day-content">
+                            <h4>Neural Networks Basics</h4>
+                            <ul class="topic-list">
+                                <li>Perceptrons & Multi-layer Networks</li>
+                                <li>Activation functions</li>
+                                <li>Forward & backward propagation</li>
+                            </ul>
+                            <div class="day-task">
+                                <h5>Daily Task</h5>
+                                <p>Write a simple perceptron model in Python.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="day-card">
+                        <div class="day-header">Day 5</div>
+                        <div class="day-content">
+                            <h4>Deep Learning with TensorFlow & PyTorch</h4>
+                            <ul class="topic-list">
+                                <li>Convolutional Neural Networks (CNNs)</li>
+                                <li>Recurrent Neural Networks (RNNs)</li>
+                                <li>Training vs. Validation</li>
+                            </ul>
+                            <div class="day-task">
+                                <h5>Daily Task</h5>
+                                <p>Train a basic image classifier.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="day-card">
+                        <div class="day-header">Day 6</div>
+                        <div class="day-content">
+                            <h4>Natural Language Processing (NLP) Basics</h4>
+                            <ul class="topic-list">
+                                <li>Text Preprocessing & Tokenization</li>
+                                <li>Bag of Words, TF-IDF, Word Embeddings</li>
+                            </ul>
+                            <div class="day-task">
+                                <h5>Daily Task</h5>
+                                <p>Build a simple text classifier.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="day-card">
+                        <div class="day-header">Day 7</div>
+                        <div class="day-content">
+                            <h4>Transformers & Hugging Face</h4>
+                            <ul class="topic-list">
+                                <li>What are Transformers? (BERT, GPT, T5)</li>
+                                <li>Attention Mechanism & Self-Attention</li>
+                            </ul>
+                            <div class="day-task">
+                                <h5>Daily Task</h5>
+                                <p>Run a pre-trained transformer model using Hugging Face.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="week2" class="week-section" style="background-color: #f8f9fa;">
+            <div class="container">
+                <div class="week-header">
+                    <h2>✅ Week 2: Working with AI Models</h2>
+                    <p class="goal">📌 Goal: Learn API usage, fine-tuning, and AI customization.</p>
+                </div>
+                
+                <div class="days-grid">
+                    <div class="day-card">
+                        <div class="day-header">Day 8</div>
+                        <div class="day-content">
+                            <h4>Hugging Face & Pre-trained Models</h4>
+                            <ul class="topic-list">
+                                <li>Using transformers library</li>
+                                <li>Running inference with a model</li>
+                            </ul>
+                            <div class="day-task">
+                                <h5>Daily Task</h5>
+                                <p>Load GPT-2 and generate text.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="day-card">
+                        <div class="day-header">Day 9</div>
+                        <div class="day-content">
+                            <h4>OpenAI API & Chatbot Basics</h4>
+                            <ul class="topic-list">
+                                <li>API keys & authentication</li>
+                                <li>OpenAI API parameters (temperature, tokens)</li>
+                            </ul>
+                            <div class="day-task">
+                                <h5>Daily Task</h5>
+                                <p>Build a chatbot using OpenAI API.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="day-card">
+                        <div class="day-header">Day 10</div>
+                        <div class="day-content">
+                            <h4>Fine-Tuning AI Models</h4>
+                            <ul class="topic-list">
+                                <li>How to fine-tune models on custom datasets</li>
+                                <li>Hyperparameter tuning</li>
+                            </ul>
+                            <div class="day-task">
+                                <h5>Daily Task</h5>
+                                <p>Fine-tune a small transformer model.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="day-card">
+                        <div class="day-header">Day 11</div>
+                        <div class="day-content">
+                            <h4>Prompt Engineering</h4>
+                            <ul class="topic-list">
+                                <li>Few-shot and zero-shot learning</li>
+                                <li>Chain-of-thought prompting</li>
+                            </ul>
+                            <div class="day-task">
+                                <h5>Daily Task</h5>
+                                <p>Create optimized prompts for an AI assistant.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="day-card">
+                        <div class="day-header">Day 12</div>
+                        <div class="day-content">
+                            <h4>Vector Databases & Embeddings</h4>
+                            <ul class="topic-list">
+                                <li>Storing and retrieving embeddings</li>
+                                <li>Vector search</li>
+                            </ul>
+                            <div class="day-task">
+                                <h5>Daily Task</h5>
+                                <p>Implement a basic vector database.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="day-card">
+                        <div class="day-header">Day 13</div>
+                        <div class="day-content">
+                            <h4>Retrieval-Augmented Generation (RAG)</h4>
+                            <ul class="topic-list">
+                                <li>Using external knowledge in LLMs</li>
+                                <li>Chunking documents</li>
+                            </ul>
+                            <div class="day-task">
+                                <h5>Daily Task</h5>
+                                <p>Build a simple knowledge-based chatbot.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="day-card">
+                        <div class="day-header">Day 14</div>
+                        <div class="day-content">
+                            <h4>Evaluating AI Models</h4>
+                            <ul class="topic-list">
+                                <li>Accuracy, precision, recall</li>
+                                <li>A/B testing</li>
+                            </ul>
+                            <div class="day-task">
+                                <h5>Daily Task</h5>
+                                <p>Evaluate chatbot responses for accuracy.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="week3" class="week-section">
+            <div class="container">
+                <div class="week-header">
+                    <h2>✅ Week 3: Web Development & AI Integration</h2>
+                    <p class="goal">📌 Goal: Build a functional website for the AI assistant.</p>
+                </div>
+                
+                <div class="days-grid">
+                    <div class="day-card">
+                        <div class="day-header">Day 15</div>
+                        <div class="day-content">
+                            <h4>HTML, CSS, JavaScript Basics</h4>
+                            <ul class="topic-list">
+                                <li>Structure, styling, interactivity</li>
+                            </ul>
+                            <div class="day-task">
+                                <h5>Daily Task</h5>
+                                <p>Create a basic webpage layout.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="day-card">
+                        <div class="day-header">Day 16</div>
+                        <div class="day-content">
+                            <h4>Frontend Development with React.js</h4>
+                            <ul class="topic-list">
+                                <li>React components & state</li>
+                                <li>Building interactive UI</li>
+                            </ul>
+                            <div class="day-task">
+                                <h5>Daily Task</h5>
+                                <p>Build a chatbot UI with React.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="day-card">
+                        <div class="day-header">Day 17</div>
+                        <div class="day-content">
+                            <h4>Backend with Flask/FastAPI</h4>
+                            <ul class="topic-list">
+                                <li>REST APIs</li>
+                                <li>Handling requests & responses</li>
+                            </ul>
+                            <div class="day-task">
+                                <h5>Daily Task</h5>
+                                <p>Set up a Flask backend for AI responses.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="day-card">
+                        <div class="day-header">Day 18</div>
+                        <div class="day-content">
+                            <h4>Database Integration (MongoDB/Firebase)</h4>
+                            <ul class="topic-list">
+                                <li>Storing user messages</li>
+                                <li>Querying a database</li>
+                            </ul>
+                            <div class="day-task">
+                                <h5>Daily Task</h5>
+                                <p>Connect a database to store chat history.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="day-card">
+                        <div class="day-header">Day 19</div>
+                        <div class="day-content">
+                            <h4>Authentication & User Management</h4>
+                            <ul class="topic-list">
+                                <li>User registration & login</li>
+                                <li>Security practices</li>
+                            </ul>
+                            <div class="day-task">
+                                <h5>Daily Task</h5>
+                                <p>Implement a basic login system.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="day-card">
+                        <div class="day-header">Day 20</div>
+                        <div class="day-content">
+                            <h4>Deploying on Cloud (AWS, GCP, Render)</h4>
+                            <ul class="topic-list">
+                                <li>Server hosting</li>
+                                <li>Docker basics</li>
+                            </ul>
+                            <div class="day-task">
+                                <h5>Daily Task</h5>
+                                <p>Deploy the backend on the cloud.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="day-card">
+                        <div class="day-header">Day 21</div>
+                        <div class="day-content">
+                            <h4>Creating a Real-time Chat UI</h4>
+                            <ul class="topic-list">
+                                <li>WebSockets for instant messaging</li>
+                            </ul>
+                            <div class="day-task">
+                                <h5>Daily Task</h5>
+                                <p>Implement a real-time chat feature.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="week4" class="week-section" style="background-color: #f8f9fa;">
+            <div class="container">
+                <div class="week-header">
+                    <h2>✅ Week 4: Advanced Features & Deployment</h2>
+                    <p class="goal">📌 Goal: Add features, test, and launch the final product.</p>
+                </div>
+                
+                <div class="days-grid">
+                    <div class="day-card">
+                        <div class="day-header">Day 22</div>
+                        <div class="day-content">
+                            <h4>AI System Architecture</h4>
+                            <ul class="topic-list">
+                                <li>Microservices vs. Monolithic</li>
+                                <li>Load balancing</li>
+                            </ul>
+                            <div class="day-task">
+                                <h5>Daily Task</h5>
+                                <p>Design an architecture for scaling.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="day-card">
+                        <div class="day-header">Day 23</div>
+                        <div class="day-content">
+                            <h4>Streaming AI Responses</h4>
+                            <ul class="topic-list">
+                                <li>Server-Sent Events (SSE)</li>
+                                <li>Handling async API calls</li>
+                            </ul>
+                            <div class="day-task">
+                                <h5>Daily Task</h5>
+                                <p>Implement streaming responses in your chatbot.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="day-card">
+                        <div class="day-header">Day 24</div>
+                        <div class="day-content">
+                            <h4>Code Completion & AI Assistance</h4>
+                            <ul class="topic-list">
+                                <li>AI-powered code suggestions</li>
+                            </ul>
+                            <div class="day-task">
+                                <h5>Daily Task</h5>
+                                <p>Add code completion in your chatbot.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="day-card">
+                        <div class="day-header">Day 25</div>
+                        <div class="day-content">
+                            <h4>Responsible AI & Safety Measures</h4>
+                            <ul class="topic-list">
+                                <li>Content moderation</li>
+                                <li>Ethical AI considerations</li>
+                            </ul>
+                            <div class="day-task">
+                                <h5>Daily Task</h5>
+                                <p>Implement a toxicity filter.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="day-card">
+                        <div class="day-header">Day 26</div>
+                        <div class="day-content">
+                            <h4>Analytics & Monitoring</h4>
+                            <ul class="topic-list">
+                                <li>Logging user interactions</li>
+                                <li>Error tracking</li>
+                            </ul>
+                            <div class="day-task">
+                                <h5>Daily Task</h5>
+                                <p>Set up analytics for user behavior tracking.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="day-card">
+                        <div class="day-header">Day 27</div>
+                        <div class="day-content">
+                            <h4>Advanced Features</h4>
+                            <ul class="topic-list">
+                                <li>File uploads</li>
+                                <li>Voice input/output</li>
+                            </ul>
+                            <div class="day-task">
+                                <h5>Daily Task</h5>
+                                <p>Add a voice-based interaction feature.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="day-card">
+                        <div class="day-header">Day 28</div>
+                        <div class="day-content">
+                            <h4>Testing & Bug Fixing</h4>
+                            <ul class="topic-list">
+                                <li>Unit testing & debugging</li>
+                            </ul>
+                            <div class="day-task">
+                                <h5>Daily Task</h5>
+                                <p>Write test cases and fix bugs.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="day-card">
+                        <div class="day-header">Day 29</div>
+                        <div class="day-content">
+                            <h4>Final Integration & UI Polish</h4>
+                            <ul class="topic-list">
+                                <li>Improve design & responsiveness</li>
+                            </ul>
+                            <div class="day-task">
+                                <h5>Daily Task</h5>
+                                <p>Ensure a smooth user experience.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="day-card">
+                        <div class="day-header">Day 30</div>
+                        <div class="day-content">
+                            <h4>Deployment & Launch 🚀</h4>
+                            <ul class="topic-list">
+                                <li>Final testing</li>
+                                <li>Documentation</li>
+                            </ul>
+                            <div class="day-task">
+                                <h5>Daily Task</h5>
+                                <p>Deploy and showcase your AI assistant!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="next-steps" class="next-steps">
+            <div class="container">
+                <h2>🔥 Next Steps (Beyond 30 Days)</h2>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <h3>✅ Join AI Hackathons</h3>
+                        <p>Test your skills and collaborate with others at AI hackathons.</p>
+                    </div>
+                    <div class="step-card">
+                        <h3>✅ Build a Community Version</h3>
+                        <p>Create an open-source version of your chatbot for community contributions.</p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <h3>✅ Explore Advanced NLP</h3>
+                        <p>Dive into Reinforcement Learning and other advanced NLP techniques.</p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <h3>✅ Keep Improving</h3>
+                        <p>Constantly update and improve your AI assistant with new features.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container footer-content">
+            <div>
+                <h3>AI Assistant Roadmap</h3>
+                <p>Your 30-day journey to creating your own AI assistant</p>
+            </div>
+            
+            <ul class="social-links">
+                <li><a href="#" aria-label="GitHub">GitHub</a></li>
+                <li><a href="#" aria-label="Twitter">Twitter</a></li>
+                <li><a href="#" aria-label="Discord">Discord</a></li>
+                <li><a href="#" aria-label="LinkedIn">LinkedIn</a></li>
+            </ul>
+            
+            <div class="copyright">
+                &copy; <span id="current-year">2025</span> AI Roadmap | All Rights Reserved
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Set the current year for the footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add active class to nav items on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                
+                if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                    currentSection = '#' + section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Add a class to nav when scrolling down
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
