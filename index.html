@@ -314,6 +314,116 @@
                 margin-right: 1rem;
             }
         }
+        .resources-container {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .resource-category {
+        background-color: white;
+        border-radius: 10px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+    
+    .resource-category h3 {
+        color: var(--primary);
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .week-tag {
+        background-color: var(--primary);
+        color: white;
+        font-size: 0.7rem;
+        padding: 0.2rem 0.6rem;
+        border-radius: 20px;
+        font-weight: normal;
+    }
+    
+    .resource-list {
+        list-style: none;
+    }
+    
+    .resource-list li {
+        margin-bottom: 0.8rem;
+    }
+    
+    .resource-link {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.8rem;
+        border-radius: 8px;
+        color: var(--dark);
+        text-decoration: none;
+        transition: all 0.2s ease;
+        background-color: #f8f9fa;
+    }
+    
+    .resource-link:hover {
+        background-color: #e9ecef;
+        transform: translateX(5px);
+    }
+    
+    .resource-name {
+        font-weight: 600;
+        color: var(--primary);
+    }
+    
+    .resource-desc {
+        color: #666;
+        font-size: 0.9rem;
+    }
+    
+    .best-overall {
+        background-color: #f0f8ff;
+        border: 1px solid #d1e3ff;
+    }
+    
+    .best-platforms {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+    
+    .platform-card {
+        background-color: white;
+        padding: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    
+    .platform-card h4 {
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+    }
+    
+    .platform-card ul {
+        list-style: none;
+    }
+    
+    .platform-card li {
+        margin-bottom: 0.5rem;
+    }
+    
+    .platform-card a {
+        color: var(--dark);
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+    
+    .platform-card a:hover {
+        color: var(--primary);
+        text-decoration: underline;
+    }
     </style>
 </head>
 <body>
@@ -832,6 +942,230 @@
                 </div>
             </div>
         </section>
+        <section id="resources" class="week-section" style="background-color: #f0f4ff;">
+    <div class="container">
+        <div class="week-header">
+            <h2>Free Learning Resources</h2>
+            <p class="goal">📚 Best platforms to learn everything in this roadmap for free</p>
+        </div>
+            
+            <div class="resources-container">
+                <div class="resource-category">
+                    <h3>Python & Data Structures <span class="week-tag">Week 1</span></h3>
+                    <ul class="resource-list">
+                        <li>
+                            <a href="https://www.w3schools.com/python/" target="_blank" class="resource-link">
+                                <span class="resource-name">W3Schools</span>
+                                <span class="resource-desc">Best for Python basics</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.geeksforgeeks.org/python-programming-language/" target="_blank" class="resource-link">
+                                <span class="resource-name">GeeksforGeeks Python</span>
+                                <span class="resource-desc">Deep explanations with examples</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://cs50.harvard.edu/python/" target="_blank" class="resource-link">
+                                <span class="resource-name">CS50 Python Course (Harvard)</span>
+                                <span class="resource-desc">Best structured Python course</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="resource-category">
+                    <h3>Machine Learning & Neural Networks <span class="week-tag">Week 1-2</span></h3>
+                    <ul class="resource-list">
+                        <li>
+                            <a href="https://developers.google.com/machine-learning/crash-course" target="_blank" class="resource-link">
+                                <span class="resource-name">Google's Machine Learning Crash Course</span>
+                                <span class="resource-desc">Free and beginner-friendly</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://course.fast.ai/" target="_blank" class="resource-link">
+                                <span class="resource-name">Fast.ai</span>
+                                <span class="resource-desc">Best for practical deep learning</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://see.stanford.edu/Course/CS229" target="_blank" class="resource-link">
+                                <span class="resource-name">Stanford CS229</span>
+                                <span class="resource-desc">Best theoretical ML course (video lectures + notes)</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="resource-category">
+                    <h3>Hugging Face & OpenAI API <span class="week-tag">Week 2</span></h3>
+                    <ul class="resource-list">
+                        <li>
+                            <a href="https://huggingface.co/course" target="_blank" class="resource-link">
+                                <span class="resource-name">Hugging Face Course</span>
+                                <span class="resource-desc">Covers transformers, fine-tuning, and NLP</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://platform.openai.com/docs/" target="_blank" class="resource-link">
+                                <span class="resource-name">OpenAI API Docs</span>
+                                <span class="resource-desc">Official documentation for API usage</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.youtube.com/results?search_query=OpenAI+API+tutorial" target="_blank" class="resource-link">
+                                <span class="resource-name">YouTube - OpenAI API Tutorials</span>
+                                <span class="resource-desc">Many tutorials available</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="resource-category">
+                    <h3>Web Development <span class="week-tag">Week 3</span></h3>
+                    <ul class="resource-list">
+                        <li>
+                            <a href="https://www.theodinproject.com/" target="_blank" class="resource-link">
+                                <span class="resource-name">The Odin Project</span>
+                                <span class="resource-desc">Best full-stack web development course</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://developer.mozilla.org/" target="_blank" class="resource-link">
+                                <span class="resource-name">MDN Web Docs</span>
+                                <span class="resource-desc">Best for HTML, CSS, JavaScript</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.freecodecamp.org/" target="_blank" class="resource-link">
+                                <span class="resource-name">FreeCodeCamp</span>
+                                <span class="resource-desc">Best interactive frontend + backend lessons</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="resource-category">
+                    <h3>Backend <span class="week-tag">Week 3</span></h3>
+                    <ul class="resource-list">
+                        <li>
+                            <a href="https://www.geeksforgeeks.org/python-flask-tutorial/" target="_blank" class="resource-link">
+                                <span class="resource-name">Flask Tutorial - Python (GeeksforGeeks)</span>
+                                <span class="resource-desc">Complete Flask web framework guide</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://fastapi.tiangolo.com/tutorial/" target="_blank" class="resource-link">
+                                <span class="resource-name">FastAPI Tutorial</span>
+                                <span class="resource-desc">Best for modern API development</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="resource-category">
+                    <h3>Databases & Authentication <span class="week-tag">Week 3</span></h3>
+                    <ul class="resource-list">
+                        <li>
+                            <a href="https://www.khanacademy.org/computing/computer-programming/sql" target="_blank" class="resource-link">
+                                <span class="resource-name">SQL for Beginners (Khan Academy)</span>
+                                <span class="resource-desc">Interactive SQL basics</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://university.mongodb.com/" target="_blank" class="resource-link">
+                                <span class="resource-name">MongoDB University Free Courses</span>
+                                <span class="resource-desc">Best for NoSQL</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://auth0.com/docs" target="_blank" class="resource-link">
+                                <span class="resource-name">Auth0 Documentation</span>
+                                <span class="resource-desc">Best for user authentication</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="resource-category">
+                    <h3>AI System Deployment <span class="week-tag">Week 4</span></h3>
+                    <ul class="resource-list">
+                        <li>
+                            <a href="https://www.youtube.com/watch?v=Gjnup-PuquQ" target="_blank" class="resource-link">
+                                <span class="resource-name">Docker for Beginners (FreeCodeCamp)</span>
+                                <span class="resource-desc">Containerization basics</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://aws.amazon.com/training/self-paced-labs/" target="_blank" class="resource-link">
+                                <span class="resource-name">AWS Free Tier Labs</span>
+                                <span class="resource-desc">Learn cloud deployment</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.cloudskillsboost.google/" target="_blank" class="resource-link">
+                                <span class="resource-name">Google Cloud Free Courses</span>
+                                <span class="resource-desc">GCP learning resources</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="resource-category">
+                    <h3>Advanced Topics <span class="week-tag">Week 4</span></h3>
+                    <ul class="resource-list">
+                        <li>
+                            <a href="https://ocw.mit.edu/courses/media-arts-and-sciences/mas-s62-ai-and-ethics-fall-2018/" target="_blank" class="resource-link">
+                                <span class="resource-name">MIT AI Ethics Lectures</span>
+                                <span class="resource-desc">Ethics in artificial intelligence</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://alignment.stanford.edu/" target="_blank" class="resource-link">
+                                <span class="resource-name">Stanford AI Alignment Course</span>
+                                <span class="resource-desc">AI safety and alignment</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://fullstackdeeplearning.com/" target="_blank" class="resource-link">
+                                <span class="resource-name">Full Stack Deep Learning</span>
+                                <span class="resource-desc">End-to-end AI system building</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="resource-category best-overall">
+                    <h3>Best Overall Platforms</h3>
+                    <div class="best-platforms">
+                        <div class="platform-card">
+                            <h4>For Structured Courses</h4>
+                            <ul>
+                                <li><a href="https://course.fast.ai/" target="_blank">Fast.ai</a></li>
+                                <li><a href="https://www.theodinproject.com/" target="_blank">The Odin Project</a></li>
+                            </ul>
+                        </div>
+                        <div class="platform-card">
+                            <h4>For Interactive Learning</h4>
+                            <ul>
+                                <li><a href="https://www.freecodecamp.org/" target="_blank">FreeCodeCamp</a></li>
+                                <li><a href="https://www.geeksforgeeks.org/" target="_blank">GeeksforGeeks</a></li>
+                            </ul>
+                        </div>
+                        <div class="platform-card">
+                            <h4>For Official Documentation</h4>
+                            <ul>
+                                <li><a href="https://huggingface.co/docs" target="_blank">Hugging Face</a></li>
+                                <li><a href="https://platform.openai.com/docs/" target="_blank">OpenAI</a></li>
+                                <li><a href="https://developer.mozilla.org/" target="_blank">MDN Web Docs</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
         
         <section id="next-steps" class="next-steps">
             <div class="container">
