@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>30-Day AI Development Roadmap</title>
+    <style>
+        :root {
+            --primary: #4a6baf;
+            --secondary: #6c63ff;
+            --dark: #2a2a2a;
+            --light: #f5f5f7;
+            --success: #28a745;
+            --info: #17a2b8;
+            --warning: #ffc107;
+            --danger: #dc3545;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 60px 0 30px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+            padding: 15px 0;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .weeks-container {
+            padding: 40px 0;
+        }
+        
+        .week {
+            margin-bottom: 30px;
+        }
+        
+        .week-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .days-container {
+            background-color: white;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .day {
+            border-bottom: 1px solid #eee;
+            transition: all 0.3s;
+        }
+        
+        .day:last-child {
+            border-bottom: none;
+        }
+        
+        .day-header {
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+        
+        .day-header:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .day-content {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .day-content.active {
+            max-height: 1000px;
+            padding: 10px 20px 20px;
+        }
+        
+        .day-content h3 {
+            color: var(--primary);
+            margin: 15px 0 10px;
+        }
+        
+        .day-content ul {
+            padding-left: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .day-content p {
+            margin-bottom: 10px;
+        }
+        
+        .practical {
+            background-color: #e9f5ff;
+            padding: 10px 15px;
+            border-left: 4px solid var(--info);
+            margin-top: 15px;
+            border-radius: 4px;
+        }
+        
+        .progress-container {
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 30px;
+            background-color: #e0e0e0;
+            border-radius: 15px;
+            margin: 30px 0;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 15px;
+            transition: width 0.5s;
+        }
+        
+        .resources {
+            background-color: white;
+            padding: 40px 0;
+            margin-top: 20px;
+        }
+        
+        .resource-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .resource-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .resource-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        
+        .resource-card-content {
+            padding: 20px;
+        }
+        
+        .resource-card h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 5px;
+            }
+        }
+        
+        .expand-icon {
+            transition: transform 0.3s;
+        }
+        
+        .day.active .expand-icon {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>30-Day AI Development Roadmap</h1>
+            <p>Master AI development from fundamentals to building your own AI application similar to ChatGPT, Claude, and GitHub Copilot</p>
+        </div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#week1">Week 1</a></li>
+            <li><a href="#week2">Week 2</a></li>
+            <li><a href="#week3">Week 3</a></li>
+            <li><a href="#week4">Week 4</a></li>
+            <li><a href="#resources">Resources</a></li>
+        </ul>
+    </nav>
+    
+    <section class="progress-container container">
+        <h2>Your AI Journey Progress</h2>
+        <div class="progress-bar">
+            <div class="progress" id="progressBar"></div>
+        </div>
+        <p>Track your progress as you complete each day of the roadmap</p>
+    </section>
+    
+    <section class="weeks-container container">
+        <div class="week" id="week1">
+            <div class="week-header">
+                <h2>Week 1: Foundations of AI and Machine Learning</h2>
+            </div>
+            <div class="days-container">
+                <!-- Day 1 -->
+                <div class="day">
+                    <div class="day-header">
+                        <span>Day 1: Introduction to AI</span>
+                        <span class="expand-icon">▼</span>
+                    </div>
+                    <div class="day-content">
+                        <h3>Core Concepts</h3>
+                        <ul>
+                            <li>AI definition and history</li>
+                            <li>Narrow vs. general AI</li>
+                            <li>Major milestones in AI development</li>
+                        </ul>
+                        
+                        <h3>Machine Learning Paradigms</h3>
+                        <ul>
+                            <li>Supervised learning principles and applications</li>
+                            <li>Unsupervised learning concepts and use cases</li>
+                            <li>Reinforcement learning fundamentals</li>
+                        </ul>
+                        
+                        <h3>Applications</h3>
+                        <ul>
+                            <li>Modern AI applications across industries</li>
+                            <li>Case studies of successful AI implementations</li>
+                            <li>Key differences between AI systems like ChatGPT, Claude, and Copilot</li>
+                        </ul>
+                        
+                        <div class="practical">
+                            <strong>Practical Task:</strong> Set up Python environment with necessary libraries (NumPy, Pandas, Matplotlib, TensorFlow/PyTorch)
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Day 2 -->
+                <div class="day">
+                    <div class="day-header">
+                        <span>Day 2: Mathematics for AI</span>
+                        <span class="expand-icon">▼</span>
+                    </div>
+                    <div class="day-content">
+                        <h3>Linear Algebra</h3>
+                        <ul>
+                            <li>Vectors and vector operations</li>
+                            <li>Matrices, matrix multiplication, and properties</li>
+                            <li>Eigenvalues and eigenvectors</li>
+                            <li>Linear transformations</li>
+                        </ul>
+                        
+                        <h3>Calculus</h3>
+                        <ul>
+                            <li>Derivatives and partial derivatives</li>
+                            <li>Gradient descent fundamentals</li>
+                            <li>Chain rule applications in neural networks</li>
+                        </ul>
+                        
+                        <h3>Probability & Statistics</h3>
+                        <ul>
+                            <li>Random variables and distributions</li>
+                            <li>Conditional probability</li>
+                            <li>Bayes rule and applications</li>
+                            <li>Statistical measures: mean, variance, correlation</li>
+                        </ul>
+                        
+                        <div class="practical">
+                            <strong>Practical Task:</strong> Implement basic vector and matrix operations in Python using NumPy
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Day 3 -->
+                <div class="day">
+                    <div class="day-header">
+                        <span>Day 3: Python for AI</span>
+                        <span class="expand-icon">▼</span>
+                    </div>
+                    <div class="day-content">
+                        <h3>Python Basics</h3>
+                        <ul>
+                            <li>Data structures: lists, dictionaries, sets, tuples</li>
+                            <li>Functions, lambda expressions, and comprehensions</li>
+                            <li>Classes and object-oriented programming</li>
+                        </ul>
+                        
+                        <h3>NumPy</h3>
+                        <ul>
+                            <li>N-dimensional arrays and operations</li>
+                            <li>Vectorization techniques</li>
+                            <li>Broadcasting principles</li>
+                            <li>Random number generation</li>
+                        </ul>
+                        
+                        <h3>Pandas</h3>
+                        <ul>
+                            <li>DataFrames and Series</li>
+                            <li>Data loading, filtering, and transformation</li>
+                            <li>Data cleaning and preprocessing techniques</li>
+                            <li>Exploratory data analysis</li>
+                        </ul>
+                        
+                        <div class="practical">
+                            <strong>Practical Task:</strong> Load, clean, and preprocess a sample dataset using Pandas
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Days 4-7 follow the same pattern -->
+                <div class="day">
+                    <div class="day-header">
+                        <span>Day 4: Supervised Learning - Part 1</span>
+                        <span class="expand-icon">▼</span>
+                    </div>
+                    <div class="day-content">
+                        <h3>Linear Regression</h3>
+                        <ul>
+                            <li>Simple linear regression</li>
+                            <li>Multiple regression models</li>
+                            <li>Gradient descent optimization</li>
+                            <li>Model evaluation with MSE, R-squared</li>
+                        </ul>
+                        
+                        <h3>Logistic Regression</h3>
+                        <ul>
+                            <li>Binary classification fundamentals</li>
+                            <li>Sigmoid function and log loss</li>
+                            <li>Decision boundaries</li>
+                            <li>Multiclass classification extensions</li>
+                        </ul>
+                        
+                        <h3>Model Evaluation</h3>
+                        <ul>
+                            <li>Common loss functions</li>
+                            <li>Classification metrics: accuracy, precision, recall, F1</li>
+                            <li>Confusion matrices</li>
+                            <li>Cross-validation techniques</li>
+                        </ul>
+                        
+                        <div class="practical">
+                            <strong>Practical Task:</strong> Build a simple prediction model using linear or logistic regression
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="day">
+                    <div class="day-header">
+                        <span>Day 5: Supervised Learning - Part 2</span>
+                        <span class="expand-icon">▼</span>
+                    </div>
+                    <div class="day-content">
+                        <h3>Decision Trees</h3>
+                        <ul>
+                            <li>Tree structure and decision nodes</li>
+                            <li>Splitting criteria: Gini impurity, entropy</li>
+                            <li>Pruning methods</li>
+                            <li>Advantages and limitations</li>
+                        </ul>
+                        
+                        <h3>Random Forests</h3>
+                        <ul>
+                            <li>Ensemble learning principles</li>
+                            <li>Bagging techniques</li>
+                            <li>Feature importance</li>
+                            <li>Hyperparameter tuning</li>
+                        </ul>
+                        
+                        <h3>Support Vector Machines</h3>
+                        <ul>
+                            <li>Linear SVM classification</li>
+                            <li>Kernel trick for non-linear problems</li>
+                            <li>Margin optimization</li>
+                            <li>Regularization parameters</li>
+                        </ul>
+                        
+                        <div class="practical">
+                            <strong>Practical Task:</strong> Implement and compare multiple classification algorithms on a dataset
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="day">
+                    <div class="day-header">
+                        <span>Day 6: Neural Networks Fundamentals</span>
+                        <span class="expand-icon">▼</span>
+                    </div>
+                    <div class="day-content">
+                        <h3>Perceptrons</h3>
+                        <ul>
+                            <li>Single neuron models</li>
+                            <li>Activation functions: sigmoid, ReLU, tanh</li>
+                            <li>Perceptron learning rule</li>
+                            <li>Linear separability limitations</li>
+                        </ul>
+                        
+                        <h3>Multilayer Networks</h3>
+                        <ul>
+                            <li>Network architecture: input, hidden, output layers</li>
+                            <li>Forward propagation mechanisms</li>
+                            <li>Universal approximation theorem</li>
+                            <li>Initialization techniques</li>
+                        </ul>
+                        
+                        <h3>Backpropagation</h3>
+                        <ul>
+                            <li>Chain rule application</li>
+                            <li>Gradient descent optimization</li>
+                            <li>Learning rate selection</li>
+                            <li>Vanishing/exploding gradient problems</li>
+                        </ul>
+                        
+                        <div class="practical">
+                            <strong>Practical Task:</strong> Build a simple neural network from scratch in Python
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="day">
+                    <div class="day-header">
+                        <span>Day 7: Deep Learning Libraries</span>
+                        <span class="expand-icon">▼</span>
+                    </div>
+                    <div class="day-content">
+                        <h3>TensorFlow/Keras</h3>
+                        <ul>
+                            <li>TensorFlow architecture and ecosystem</li>
+                            <li>Tensor operations and computational graphs</li>
+                            <li>Keras API structure</li>
+                            <li>TensorFlow 2.x eager execution</li>
+                        </ul>
+                        
+                        <h3>PyTorch</h3>
+                        <ul>
+                            <li>PyTorch tensors and operations</li>
+                            <li>Autograd for automatic differentiation</li>
+                            <li>nn.Module and layer structure</li>
+                            <li>Dataset and DataLoader concepts</li>
+                        </ul>
+                        
+                        <h3>Model Building</h3>
+                        <ul>
+                            <li>Sequential vs. functional APIs</li>
+                            <li>Custom layers and models</li>
+                            <li>Training loops and callbacks</li>
+                            <li>Model saving and loading</li>
+                        </ul>
+                        
+                        <div class="practical">
+                            <strong>Practical Task:</strong> Convert your neural network to a framework implementation (TensorFlow or PyTorch)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="week" id="week2">
+            <div class="week-header">
+                <h2>Week 2: Advanced Neural Networks</h2>
+            </div>
+            <div class="days-container">
+                <!-- Days 8-14 -->
+                <div class="day">
+                    <div class="day-header">
+                        <span>Day 8: Convolutional Neural Networks</span>
+                        <span class="expand-icon">▼</span>
+                    </div>
+                    <div class="day-content">
+                        <h3>CNN Architecture</h3>
+                        <ul>
+                            <li>Convolution operation principles</li>
+                            <li>Pooling layers: max pooling, average pooling</li>
+                            <li>Fully connected layers</li>
+                            <li>Architectural patterns</li>
+                        </ul>
+                        
+                        <h3>Filters and Feature Maps</h3>
+                        <ul>
+                            <li>Kernel operations</li>
+                            <li>Feature extraction hierarchy</li>
+                            <li>Receptive fields</li>
+                            <li>Visualization techniques</li>
+                        </ul>
+                        
+                        <h3>Popular CNN Models</h3>
+                        <ul>
+                            <li>LeNet architecture</li>
+                            <li>AlexNet and VGG innovations</li>
+                            <li>ResNet and skip connections</li>
+                            <li>Modern efficient architectures</li>
+                        </ul>
+                        
+                        <div class="practical">
+                            <strong>Practical Task:</strong> Implement image classification with a simple CNN
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Continue with remaining days for Week 2 -->
+                <!-- Days 9-14 would follow similar pattern -->
+            </div>
+        </div>
+        
+        <div class="week" id="week3">
+            <div class="week-header">
+                <h2>Week 3: Advanced Language Models</h2>
+            </div>
+            <div class="days-container">
+                <!-- Days 15-21 -->
+                <div class="day">
+                    <div class="day-header">
+                        <span>Day 15: Language Model Basics</span>
+                        <span class="expand-icon">▼</span>
+                    </div>
+                    <div class="day-content">
+                        <h3>Statistical Language Models</h3>
+                        <ul>
+                            <li>N-gram models</li>
+                            <li>Markov assumptions</li>
+                            <li>Smoothing techniques</li>
+                            <li>Limitations of statistical approaches</li>
+                        </ul>
+                        
+                        <h3>Neural Language Models</h3>
+                        <ul>
+                            <li>RNN-based language modeling</li>
+                            <li>Word prediction task</li>
+                            <li>Sequence generation</li>
+                            <li>Teacher forcing</li>
+                        </ul>
+                        
+                        <h3>Evaluation Metrics</h3>
+                        <ul>
+                            <li>Perplexity measurement</li>
+                            <li>BLEU score for generation</li>
+                            <li>ROUGE metrics</li>
+                            <li>Human evaluation considerations</li>
+                        </ul>
+                        
+                        <div class="practical">
+                            <strong>Practical Task:</strong> Build a simple language model
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Continue with remaining days for Week 3 -->
+                <!-- Days 16-21 would follow similar pattern -->
+            </div>
+        </div>
+        
+        <div class="week" id="week4">
+            <div class="week-header">
+                <h2>Week 4: Building Your AI Application</h2>
+            </div>
+            <div class="days-container">
+                <!-- Days 22-30 -->
+                <div class="day">
+                    <div class="day-header">
+                        <span>Day 22: Creating Model Architectures</span>
+                        <span class="expand-icon">▼</span>
+                    </div>
+                    <div class="day-content">
+                        <h3>Model Design Choices</h3>
+                        <ul>
+                            <li>Size considerations: parameters, layers, width</li>
+                            <li>Context length optimization</li>
+                            <li>Training objectives selection</li>
+                            <li>Architectural constraints</li>
+                        </ul>
+                        
+                        <h3>Efficient Architectures</h3>
+                        <ul>
+                            <li>Parameter sharing techniques</li>
+                            <li>Mixture of experts approach</li>
+                            <li>Conditional computation</li>
+                            <li>Sparse models</li>
+                        </ul>
+                        
+                        <h3>Quantization</h3>
+                        <ul>
+                            <li>Model size reduction methods</li>
+                            <li>Precision types: FP16, INT8</li>
+                            <li>Quantization-aware training</li>
+                            <li>Performance impact assessment</li>
+                        </ul>
+                        
+                        <div class="practical">
+                            <strong>Practical Task:</strong> Design your own model architecture
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Continue with remaining days for Week 4 -->
+                <!-- Days 23-30 would follow similar pattern -->
+            </div>
+        </div>
+    </section>
+    
+    <section class="resources container" id="resources">
+        <h2>Learning Resources</h2>
+        <p>Enhance your learning journey with these curated resources</p>
+        
+        <div class="resource-cards">
+            <div class="resource-card">
+                <img src="/api/placeholder/400/200" alt="Resource">
+                <div class="resource-card-content">
+                    <h3>Python for AI</h3>
+                    <p>Essential Python libraries and practices for AI development</p>
+                </div>
+            </div>
+            
+            <div class="resource-card">
+                <img src="/api/placeholder/400/200" alt="Resource">
+                <div class="resource-card-content">
+                    <h3>Deep Learning Fundamentals</h3>
+                    <p>Core concepts and practical applications of neural networks</p>
+                </div>
+            </div>
+            
+            <div class="resource-card">
+                <img src="/api/placeholder/400/200" alt="Resource">
+                <div class="resource-card-content">
+                    <h3>Language Models &amp; NLP</h3>
+                    <p>Building and optimizing language processing systems</p>
+                </div>
+            </div>
+            
+            <div class="resource-card">
+                <img src="/api/placeholder/400/200" alt="Resource">
+                <div class="resource-card-content">
+                    <h3>AI Deployment</h3>
+                    <p>Best practices for deploying AI systems into production</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>© 2025 AI Development Roadmap | Your Journey to Building Advanced AI Systems</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Toggle day content visibility
+        document.querySelectorAll('.day-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const day = header.parentElement;
+                const content = header.nextElementSibling;
+                
+                // Toggle active class
+                day.classList.toggle('active');
+                content.classList.toggle('active');
+            });
+        });
+        
+        // Track progress (simplified version)
+        let completed = 0;
+        const totalDays = 30;
+        
+        function updateProgress() {
+            const progressBar = document.getElementById('progressBar');
+            const progressPercentage = (completed / totalDays) * 100;
+            progressBar.style.width = progressPercentage + '%';
+        }
+        
+        // Initialize with 0 days completed
+        updateProgress();
+    </script>
+</body>
+</html>
