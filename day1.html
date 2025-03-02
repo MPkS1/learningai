@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>30-Day AI Learning Journey: Day 1</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        h1 {
+            font-size: 2.2em;
+        }
+        h2 {
+            font-size: 1.8em;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+        h3 {
+            font-size: 1.4em;
+            margin-top: 30px;
+        }
+        .example-box {
+            background-color: #e8f4fc;
+            border-left: 5px solid #3498db;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .key-term {
+            font-weight: bold;
+            color: #e74c3c;
+        }
+        .compare-container {
+            display: flex;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .compare-box {
+            flex: 1;
+            background-color: #f1f1f1;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .section {
+            background-color: white;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .task-section {
+            background-color: #f0f7ff;
+            border: 1px solid #d0e3ff;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 30px 0;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+        }
+        .progress-tracker {
+            background-color: #2c3e50;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 40px;
+            text-align: center;
+        }
+        .progress-bar {
+            background-color: #444;
+            height: 20px;
+            border-radius: 10px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+        .progress {
+            background-color: #3498db;
+            width: 3.33%; /* 1 out of 30 days */
+            height: 100%;
+        }
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>30-Day AI Learning Journey</h1>
+        <p>Day 1: Introduction to AI & Machine Learning</p>
+    </header>
+
+    <div class="section">
+        <h2>What is Artificial Intelligence?</h2>
+        
+        <p>Artificial Intelligence (AI) refers to computer systems designed to perform tasks that typically require human intelligence. These include learning from experience, recognizing patterns, understanding language, making decisions, and solving problems.</p>
+        
+        <div class="example-box">
+            <h3>Real-World Examples:</h3>
+            <ul>
+                <li>Voice assistants like Siri, Alexa, and Google Assistant</li>
+                <li>Recommendation systems on Netflix and Spotify</li>
+                <li>Self-driving cars</li>
+                <li>Chess-playing computers like Deep Blue</li>
+                <li>Content generation tools like ChatGPT and DALL-E</li>
+            </ul>
+        </div>
+
+        <h3>How Does AI Work?</h3>
+        <p>At its core, modern AI works by:</p>
+        <ul>
+            <li>Processing large amounts of data</li>
+            <li>Identifying patterns in that data</li>
+            <li>Making predictions or decisions based on those patterns</li>
+            <li>Improving over time through more data and feedback</li>
+        </ul>
+        
+        <h3>Narrow AI vs. General AI</h3>
+        
+        <div class="compare-container">
+            <div class="compare-box">
+                <h4>Narrow AI (Weak AI)</h4>
+                <p>Systems designed to perform a specific task very well, but cannot perform outside their programmed domain.</p>
+                <p><strong>Examples:</strong></p>
+                <ul>
+                    <li>Chess-playing programs</li>
+                    <li>Image recognition software</li>
+                    <li>Spam filters</li>
+                    <li>Virtual assistants</li>
+                </ul>
+                <p><strong>Current Status:</strong> Widely deployed and used daily</p>
+            </div>
+            
+            <div class="compare-box">
+                <h4>General AI (Strong AI)</h4>
+                <p>Systems with human-like intelligence that can understand, learn, and apply knowledge across different domains.</p>
+                <p><strong>Examples:</strong></p>
+                <ul>
+                    <li>Science fiction concepts like HAL 9000 from "2001: A Space Odyssey"</li>
+                    <li>Theoretical systems that can reason across domains like humans</li>
+                </ul>
+                <p><strong>Current Status:</strong> Does not yet exist; remains theoretical</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Machine Learning vs. Deep Learning</h2>
+        
+        <p>Machine Learning and Deep Learning are subfields of AI, with Deep Learning being a specialized type of Machine Learning.</p>
+
+        <div class="compare-container">
+            <div class="compare-box">
+                <h4>Machine Learning</h4>
+                <p>A subset of AI where algorithms learn from data without being explicitly programmed for specific tasks.</p>
+                <p><strong>Key Characteristics:</strong></p>
+                <ul>
+                    <li>Requires feature engineering (humans deciding what features are important)</li>
+                    <li>Works well with structured data</li>
+                    <li>Typically requires less data and computing power</li>
+                </ul>
+                <p><strong>Common Algorithms:</strong></p>
+                <ul>
+                    <li>Linear Regression</li>
+                    <li>Decision Trees</li>
+                    <li>Random Forest</li>
+                    <li>Support Vector Machines</li>
+                    <li>K-means Clustering</li>
+                </ul>
+            </div>
+            
+            <div class="compare-box">
+                <h4>Deep Learning</h4>
+                <p>A subset of Machine Learning using neural networks with many layers (hence "deep").</p>
+                <p><strong>Key Characteristics:</strong></p>
+                <ul>
+                    <li>Automatic feature extraction (the system learns what's important)</li>
+                    <li>Excels with unstructured data (images, text, audio)</li>
+                    <li>Requires large amounts of data and computing power</li>
+                </ul>
+                <p><strong>Common Architectures:</strong></p>
+                <ul>
+                    <li>Convolutional Neural Networks (CNN)</li>
+                    <li>Recurrent Neural Networks (RNN)</li>
+                    <li>Transformers</li>
+                    <li>Generative Adversarial Networks (GAN)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="example-box">
+            <h3>Real-World Example: Image Recognition</h3>
+            <p><strong>Traditional Machine Learning Approach:</strong> Engineers would define features like edges, corners, and color histograms, then train algorithms to recognize patterns in these manually defined features.</p>
+            <p><strong>Deep Learning Approach:</strong> A neural network learns hierarchical features automatically - first identifying edges, then shapes, then higher-level features like "eyes" or "wheels" - without human-defined features.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Language Models (GPT, BERT, etc.)</h2>
+        
+        <p>Language models are AI systems trained to understand and generate human language. They have revolutionized natural language processing tasks in recent years.</p>
+        
+        <h3>How Language Models Work</h3>
+        <p>Modern language models use neural networks (particularly transformer architectures) trained on vast amounts of text to:</p>
+        <ul>
+            <li>Predict the next word in a sequence</li>
+            <li>Understand relationships between words</li>
+            <li>Capture contextual meaning</li>
+            <li>Generate coherent and contextually appropriate text</li>
+        </ul>
+        
+        <h3>Major Language Models</h3>
+        
+        <div class="example-box">
+            <h4>GPT (Generative Pre-trained Transformer)</h4>
+            <p>Developed by OpenAI, the GPT family specializes in generating human-like text based on prompts.</p>
+            <p><strong>Key Features:</strong></p>
+            <ul>
+                <li>Autoregressive (predicts next token based on previous tokens)</li>
+                <li>Excels at text generation and completion tasks</li>
+                <li>Used in tools like ChatGPT</li>
+                <li>Has evolved through versions (GPT-1, GPT-2, GPT-3, GPT-4)</li>
+            </ul>
+            <p><strong>Example Application:</strong> Writing assistance, content creation, conversational AI</p>
+        </div>
+        
+        <div class="example-box">
+            <h4>BERT (Bidirectional Encoder Representations from Transformers)</h4>
+            <p>Developed by Google, BERT introduced bidirectional training of transformers.</p>
+            <p><strong>Key Features:</strong></p>
+            <ul>
+                <li>Bidirectional (considers context from both before and after each word)</li>
+                <li>Excels at understanding meaning and context</li>
+                <li>Primarily used for understanding rather than generation</li>
+            </ul>
+            <p><strong>Example Application:</strong> Google Search, sentiment analysis, document classification</p>
+        </div>
+        
+        <div class="example-box">
+            <h4>Other Notable Language Models</h4>
+            <ul>
+                <li><strong>T5 (Text-to-Text Transfer Transformer):</strong> Treats all NLP tasks as text-to-text problems</li>
+                <li><strong>LLaMA:</strong> Meta's open-source large language model</li>
+                <li><strong>Claude:</strong> Anthropic's language model, designed with a focus on helpfulness and harmlessness</li>
+                <li><strong>PaLM:</strong> Google's Pathways Language Model</li>
+            </ul>
+        </div>
+        
+        <h3>Impact of Language Models</h3>
+        <p>Language models have transformed how we interact with computers, enabling:</p>
+        <ul>
+            <li>More natural human-computer interaction</li>
+            <li>Automated content creation</li>
+            <li>Advanced translation services</li>
+            <li>Code generation and assistance</li>
+            <li>Automated summarization and information extraction</li>
+        </ul>
+    </div>
+
+    <div class="task-section">
+        <h2>Daily Task</h2>
+        <h3>Watch an AI overview video and write down key learnings</h3>
+        
+        <p>Recommended Videos:</p>
+        <ul>
+            <li>"What Is Artificial Intelligence? Crash Course AI #1" by CrashCourse on YouTube</li>
+            <li>"How Machines Learn" by CGP Grey</li>
+            <li>"AI, Explained" by Vox</li>
+            <li>"How Neural Networks Work" by 3Blue1Brown</li>
+        </ul>
+        
+        <p><strong>Reflection Questions:</strong></p>
+        <ol>
+            <li>What surprised you the most about how AI systems actually work?</li>
+            <li>What are two examples of AI you've interacted with in the past week?</li>
+            <li>How would you explain the difference between machine learning and deep learning to a friend?</li>
+            <li>What potential applications of language models are you most interested in exploring?</li>
+        </ol>
+
+    <div class="progress-tracker">
+        <h3>Your 30-Day AI Learning Progress</h3>
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+        <p>Day 1 of 30 Completed</p>
+    </div>
+
+    <footer>
+        <p>© 2025 Your AI Learning Journey | Continue to <a href="#">Day 2: Neural Networks Basics</a></p>
+    </footer>
+</body>
+</html>
