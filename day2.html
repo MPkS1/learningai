@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 2: Python Basics - AI Learning Roadmap</title>
+  <style>
+    /* Base styles */
+    :root {
+      --background: #ffffff;
+      --foreground: #0f172a;
+      --primary: #3b82f6;
+      --primary-foreground: #f8fafc;
+      --muted: #f1f5f9;
+      --muted-foreground: #64748b;
+      --border: #e2e8f0;
+      --radius: 0.5rem;
+      --accent: #f1f5f9;
+      --accent-foreground: #1e293b;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--foreground);
+      background-color: var(--background);
+    }
+
+    .container {
+      max-width: 1024px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    /* Typography */
+    h1 {
+      font-size: 2.25rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-top: 3rem;
+      margin-bottom: 1.5rem;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    /* Layout */
+    .space-y-2 > * + * {
+      margin-top: 0.5rem;
+    }
+
+    .space-y-4 > * + * {
+      margin-top: 1rem;
+    }
+
+    .space-y-6 > * + * {
+      margin-top: 1.5rem;
+    }
+
+    .space-y-12 > * + * {
+      margin-top: 3rem;
+    }
+
+    .mb-8 {
+      margin-bottom: 2rem;
+    }
+
+    .mt-2 {
+      margin-top: 0.5rem;
+    }
+
+    .mt-4 {
+      margin-top: 1rem;
+    }
+
+    .pt-8 {
+      padding-top: 2rem;
+    }
+
+    /* Components */
+    .badge {
+      display: inline-block;
+      background-color: var(--primary);
+      color: var(--primary-foreground);
+      padding: 0.25rem 0.75rem;
+      border-radius: var(--radius);
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    .text-muted {
+      color: var(--muted-foreground);
+    }
+
+    .text-xl {
+      font-size: 1.25rem;
+    }
+
+    .text-lg {
+      font-size: 1.125rem;
+    }
+
+    .text-sm {
+      font-size: 0.875rem;
+    }
+
+    .font-mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    .font-semibold {
+      font-weight: 600;
+    }
+
+    .font-medium {
+      font-weight: 500;
+    }
+
+    /* Lists */
+    ul, ol {
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      list-style-type: disc;
+    }
+
+    ol {
+      list-style-type: decimal;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Code blocks */
+    .code-block {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+
+    .code-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background-color: var(--muted);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .code-icon {
+      width: 1rem;
+      height: 1rem;
+    }
+
+    .code-content {
+      padding: 1rem;
+      overflow-x: auto;
+      background-color: var(--background);
+    }
+
+    pre {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.875rem;
+      white-space: pre;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      background-color: var(--muted);
+      padding: 0.125rem 0.25rem;
+      border-radius: 0.25rem;
+    }
+
+    pre code {
+      background-color: transparent;
+      padding: 0;
+      border-radius: 0;
+    }
+
+    /* Tabs */
+    .tabs {
+      margin-top: 1rem;
+    }
+
+    .tab-list {
+      display: flex;
+      background-color: var(--muted);
+      border-radius: var(--radius);
+      padding: 0.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .tab-trigger {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      border-radius: 0.25rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .tab-trigger:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    .tab-trigger.active {
+      background-color: var(--background);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    /* Cards and sections */
+    .bg-muted {
+      background-color: var(--muted);
+    }
+
+    .rounded-lg {
+      border-radius: var(--radius);
+    }
+
+    .p-6 {
+      padding: 1.5rem;
+    }
+
+    .p-4 {
+      padding: 1rem;
+    }
+
+    .border {
+      border: 1px solid var(--border);
+    }
+
+    /* Navigation */
+    .nav-links {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 2rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      border-radius: var(--radius);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: var(--primary-foreground);
+    }
+
+    .btn-primary:hover {
+      background-color: #2563eb;
+    }
+
+    .btn-secondary {
+      background-color: var(--background);
+      color: var(--foreground);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--accent);
+      color: var(--accent-foreground);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+      }
+
+      h1 {
+        font-size: 1.875rem;
+      }
+
+      h2 {
+        font-size: 1.25rem;
+      }
+
+      h3 {
+        font-size: 1.125rem;
+      }
+    }
+
+    /* Utility classes */
+    .bg-primary-light {
+      background-color: rgba(59, 130, 246, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="space-y-2 mb-8">
+      <div class="badge">Day 2</div>
+      <h1>Python Basics</h1>
+      <p class="text-xl text-muted">
+        Learn the fundamentals of Python programming to build AI applications
+      </p>
+    </div>
+
+    <div class="space-y-12">
+      <!-- Python Syntax Section -->
+      <section id="python-syntax" class="space-y-6">
+        <h2>Python Syntax, Loops, Conditions</h2>
+        
+        <div class="space-y-6">
+          <div class="space-y-4">
+            <h3>Basic Syntax</h3>
+            <p>
+              Python is known for its clean, readable syntax that uses indentation to define code blocks
+              instead of braces or keywords.
+            </p>
+            
+            <div class="code-block">
+              <div class="code-header">
+                <svg class="code-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="16 18 22 12 16 6"></polyline>
+                  <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+                <div class="text-sm font-medium">Hello World Example</div>
+              </div>
+              <div class="code-content">
+                <pre><code># This is a comment
+print("Hello, World!")  # This prints a message
+
+# Variables don't need type declarations
+name = "Python"
+version = 3.10
+is_awesome = True
+
+print(f"{name} {version} is awesome: {is_awesome}")</code></pre>
+              </div>
+            </div>
+            
+            <p>Key points about Python syntax:</p>
+            <ul>
+              <li>Indentation (usually 4 spaces) defines code blocks</li>
+              <li>Comments start with <code>#</code></li>
+              <li>Variables are dynamically typed</li>
+              <li>Statements don't need semicolons</li>
+              <li>String formatting uses f-strings (in modern Python)</li>
+            </ul>
+          </div>
+          
+          <div class="space-y-4">
+            <h3>Conditional Statements</h3>
+            <p>
+              Conditional statements let your program make decisions based on conditions.
+            </p>
+            
+            <div class="code-block">
+              <div class="code-header">
+                <svg class="code-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="16 18 22 12 16 6"></polyline>
+                  <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+                <div class="text-sm font-medium">If-Elif-Else Example</div>
+              </div>
+              <div class="code-content">
+                <pre><code># Basic if-else structure
+temperature = 25
+
+if temperature > 30:
+    print("It's hot outside!")
+elif temperature > 20:
+    print("It's a nice day!")
+else:
+    print("It's a bit cold.")
+
+# Logical operators: and, or, not
+is_sunny = True
+is_weekend = False
+
+if is_sunny and not is_weekend:
+    print("It's a sunny weekday!")
+elif is_sunny or is_weekend:
+    print("At least one good thing!")
+else:
+    print("Neither sunny nor weekend.")</code></pre>
+              </div>
+            </div>
+            
+            <p>Python's conditional statements include:</p>
+            <ul>
+              <li><code>if</code>: Executes code if a condition is true</li>
+              <li><code>elif</code>: Checks another condition if previous conditions were false</li>
+              <li><code>else</code>: Executes code if all conditions are false</li>
+              <li>Logical operators: <code>and</code>, <code>or</code>, <code>not</code></li>
+              <li>Comparison operators: <code>==</code>, <code>!=</code>, <code>></code>, <code><</code>, <code>>=</code>, <code><=</code></li>
+            </ul>
+          </div>
+          
+          <div class="space-y-4">
+            <h3>Loops</h3>
+            <p>
+              Loops allow you to repeat code execution multiple times.
+            </p>
+            
+            <div class="tabs">
+              <div class="tab-list">
+                <div class="tab-trigger active" onclick="showTab('for')">For Loops</div>
+                <div class="tab-trigger" onclick="showTab('while')">While Loops</div>
+              </div>
+              
+              <div id="for" class="tab-content active">
+                <div class="code-block">
+                  <div class="code-header">
+                    <svg class="code-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="16 18 22 12 16 6"></polyline>
+                      <polyline points="8 6 2 12 8 18"></polyline>
+                    </svg>
+                    <div class="text-sm font-medium">For Loop Examples</div>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Looping through a range
+for i in range(5):  # 0 to 4
+    print(i, end=" ")  # Prints: 0 1 2 3 4
+
+print()  # New line
+
+# Looping through a list
+fruits = ["apple", "banana", "cherry"]
+for fruit in fruits:
+    print(f"I like {fruit}s")
+
+# Enumerate gives index and value
+for index, fruit in enumerate(fruits):
+    print(f"Fruit {index+1}: {fruit}")
+
+# Loop with conditional
+for num in range(1, 11):
+    if num % 2 == 0:
+        print(f"{num} is even")
+    else:
+        print(f"{num} is odd")</code></pre>
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <p>For loops in Python can iterate over:</p>
+                  <ul>
+                    <li>Ranges of numbers using <code>range()</code></li>
+                    <li>Lists, tuples, strings, and other iterables</li>
+                    <li>Dictionary keys, values, or items</li>
+                  </ul>
+                  <p class="mt-2">The <code>enumerate()</code> function is useful when you need both the index and value.</p>
+                </div>
+              </div>
+              
+              <div id="while" class="tab-content">
+                <div class="code-block">
+                  <div class="code-header">
+                    <svg class="code-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="16 18 22 12 16 6"></polyline>
+                      <polyline points="8 6 2 12 8 18"></polyline>
+                    </svg>
+                    <div class="text-sm font-medium">While Loop Examples</div>
+                  </div>
+                  <div class="code-content">
+                    <pre><code># Basic while loop
+count = 0
+while count < 5:
+    print(count, end=" ")
+    count += 1  # Don't forget to increment!
+# Prints: 0 1 2 3 4
+
+print()  # New line
+
+# While loop with break
+number = 0
+while True:  # Infinite loop
+    number += 1
+    if number > 10:
+        break  # Exit the loop
+    if number % 2 == 0:
+        continue  # Skip even numbers
+    print(number, end=" ")  # Prints: 1 3 5 7 9
+
+print()  # New line
+
+# While with else (runs when condition becomes false)
+attempts = 0
+while attempts < 3:
+    print(f"Attempt {attempts+1}")
+    attempts += 1
+else:
+    print("All attempts completed")</code></pre>
+                  </div>
+                </div>
+                <div class="mt-4">
+                  <p>While loops continue as long as a condition is true. Important concepts:</p>
+                  <ul>
+                    <li><code>break</code>: Exits the loop immediately</li>
+                    <li><code>continue</code>: Skips the rest of the current iteration</li>
+                    <li><code>else</code> clause: Executes when the loop condition becomes false (not after a break)</li>
+                    <li>Be careful to avoid infinite loops by ensuring the condition will eventually become false</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Functions, Lists, Dictionaries Section -->
+      <section id="functions-data-structures" class="space-y-6">
+        <h2>Functions, Lists, Dictionaries</h2>
+        
+        <div class="space-y-6">
+          <div class="space-y-4">
+            <h3>Functions</h3>
+            <p>
+              Functions are reusable blocks of code that perform specific tasks. They help organize code and avoid repetition.
+            </p>
+            
+            <div class="code-block">
+              <div class="code-header">
+                <svg class="code-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="16 18 22 12 16 6"></polyline>
+                  <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+                <div class="text-sm font-medium">Function Examples</div>
+              </div>
+              <div class="code-content">
+                <pre><code># Basic function
+def greet(name):
+    """This function greets the person passed in as a parameter"""
+    return f"Hello, {name}!"
+
+# Call the function
+message = greet("Alice")
+print(message)  # Prints: Hello, Alice!
+
+# Function with default parameters
+def power(base, exponent=2):
+    """Returns base raised to the power of exponent"""
+    return base ** exponent
+
+print(power(3))      # Prints: 9 (3^2)
+print(power(2, 3))   # Prints: 8 (2^3)
+
+# Function with multiple return values
+def get_min_max(numbers):
+    """Returns the minimum and maximum values from a list"""
+    return min(numbers), max(numbers)
+
+min_val, max_val = get_min_max([5, 3, 8, 1, 9])
+print(f"Min: {min_val}, Max: {max_val}")  # Prints: Min: 1, Max: 9
+
+# Lambda function (anonymous function)
+square = lambda x: x * x
+print(square(4))  # Prints: 16</code></pre>
+              </div>
+            </div>
+            
+            <p>Key concepts for Python functions:</p>
+            <ul>
+              <li>Defined with the <code>def</code> keyword</li>
+              <li>Can have docstrings (documentation strings) enclosed in triple quotes</li>
+              <li>Can have default parameter values</li>
+              <li>Can return multiple values (as a tuple)</li>
+              <li>Lambda functions are small anonymous functions defined with the <code>lambda</code> keyword</li>
+              <li>Functions are first-class objects (can be passed as arguments, returned from other functions)</li>
+            </ul>
+          </div>
+          
+          <div class="space-y-4">
+            <h3>Lists</h3>
+            <p>
+              Lists are ordered, mutable collections that can store items of different types.
+            </p>
+            
+            <div class="code-block">
+              <div class="code-header">
+                <svg class="code-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="16 18 22 12 16 6"></polyline>
+                  <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+                <div class="text-sm font-medium">List Operations</div>
+              </div>
+              <div class="code-content">
+                <pre><code># Creating lists
+empty_list = []
+numbers = [1, 2, 3, 4, 5]
+mixed = [1, "hello", 3.14, True]
+
+# Accessing elements (indexing starts at 0)
+print(numbers[0])    # Prints: 1
+print(numbers[-1])   # Prints: 5 (negative indices count from the end)
+
+# Slicing
+print(numbers[1:3])  # Prints: [2, 3] (start at index 1, end before index 3)
+print(numbers[:3])   # Prints: [1, 2, 3] (start at beginning, end before index 3)
+print(numbers[2:])   # Prints: [3, 4, 5] (start at index 2, go to the end)
+
+# Modifying lists
+numbers.append(6)    # Add to the end: [1, 2, 3, 4, 5, 6]
+numbers.insert(0, 0) # Insert at index 0: [0, 1, 2, 3, 4, 5, 6]
+numbers.remove(3)    # Remove first occurrence of 3: [0, 1, 2, 4, 5, 6]
+popped = numbers.pop()  # Remove and return last item: 6, list becomes [0, 1, 2, 4, 5]
+numbers[0] = 10      # Modify element: [10, 1, 2, 4, 5]
+
+# List operations
+a = [1, 2, 3]
+b = [4, 5]
+c = a + b           # Concatenation: [1, 2, 3, 4, 5]
+print(len(a))       # Length: 3
+print(3 in a)       # Membership test: True
+print(a * 2)        # Repetition: [1, 2, 3, 1, 2, 3]
+
+# List comprehensions
+squares = [x**2 for x in range(5)]  # [0, 1, 4, 9, 16]
+even_squares = [x**2 for x in range(10) if x % 2 == 0]  # [0, 4, 16, 36, 64]</code></pre>
+              </div>
+            </div>
+            
+            <p>Important list methods and operations:</p>
+            <ul>
+              <li><code>append()</code>: Add an item to the end</li>
+              <li><code>insert()</code>: Add an item at a specific position</li>
+              <li><code>remove()</code>: Remove the first occurrence of a value</li>
+              <li><code>pop()</code>: Remove and return an item (default: last item)</li>
+              <li><code>sort()</code>: Sort the list in-place</li>
+              <li><code>reverse()</code>: Reverse the list in-place</li>
+              <li>List comprehensions provide a concise way to create lists</li>
+            </ul>
+          </div>
+          
+          <div class="space-y-4">
+            <h3>Dictionaries</h3>
+            <p>
+              Dictionaries are unordered collections of key-value pairs, providing fast lookups by key.
+            </p>
+            
+            <div class="code-block">
+              <div class="code-header">
+                <svg class="code-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="16 18 22 12 16 6"></polyline>
+                  <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+                <div class="text-sm font-medium">Dictionary Operations</div>
+              </div>
+              <div class="code-content">
+                <pre><code># Creating dictionaries
+empty_dict = {}
+person = {
+    "name": "John",
+    "age": 30,
+    "city": "New York"
+}
+
+# Accessing values
+print(person["name"])  # Prints: John
+
+# Using get() (safer, returns None or default if key doesn't exist)
+print(person.get("age"))  # Prints: 30
+print(person.get("email", "Not found"))  # Prints: Not found
+
+# Modifying dictionaries
+person["email"] = "john@example.com"  # Add new key-value pair
+person["age"] = 31  # Modify existing value
+del person["city"]  # Remove a key-value pair
+
+# Dictionary methods
+keys = person.keys()    # Get all keys
+values = person.values()  # Get all values
+items = person.items()  # Get all key-value pairs as tuples
+
+# Checking if a key exists
+if "name" in person:
+    print("Name exists")
+
+# Dictionary comprehension
+squares = {x: x**2 for x in range(5)}  # {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}
+
+# Nested dictionaries
+contacts = {
+    "John": {"phone": "555-1234", "email": "john@example.com"},
+    "Mary": {"phone": "555-5678", "email": "mary@example.com"}
+}
+
+print(contacts["John"]["phone"])  # Prints: 555-1234</code></pre>
+              </div>
+            </div>
+            
+            <p>Key dictionary concepts:</p>
+            <ul>
+              <li>Keys must be immutable (strings, numbers, tuples, but not lists)</li>
+              <li>Values can be any type</li>
+              <li><code>get()</code> method provides safe access with a default return value</li>
+              <li><code>keys()</code>, <code>values()</code>, and <code>items()</code> return view objects</li>
+              <li>Dictionary comprehensions provide a concise way to create dictionaries</li>
+              <li>Dictionaries can be nested for complex data structures</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Package Management Section -->
+      <section id="package-management" class="space-y-6">
+        <h2>Package Management (pip, virtualenv)</h2>
+        
+        <div class="space-y-6">
+          <div class="space-y-4">
+            <h3>pip - Python Package Installer</h3>
+            <p>
+              pip is the standard package manager for Python, used to install and manage packages from the Python Package Index (PyPI).
+            </p>
+            
+            <div class="code-block">
+              <div class="code-header">
+                <svg class="code-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="16 18 22 12 16 6"></polyline>
+                  <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+                <div class="text-sm font-medium">Common pip Commands</div>
+              </div>
+              <div class="code-content">
+                <pre><code># Install a package
+pip install package_name
+
+# Install a specific version
+pip install package_name==1.2.3
+
+# Upgrade a package
+pip install --upgrade package_name
+
+# Uninstall a package
+pip uninstall package_name
+
+# List installed packages
+pip list
+
+# Show information about a package
+pip show package_name
+
+# Save dependencies to a file
+pip freeze > requirements.txt
+
+# Install dependencies from a file
+pip install -r requirements.txt</code></pre>
+              </div>
+            </div>
+            
+            <p>Important pip concepts:</p>
+            <ul>
+              <li>pip comes pre-installed with Python 3.4+ and Python 2.7.9+</li>
+              <li>You can specify version constraints: <code>==</code> (exact), <code>>=</code> (minimum), <code><=</code> (maximum)</li>
+              <li><code>requirements.txt</code> files are commonly used to share and reproduce environments</li>
+              <li>pip installs packages globally by default (which is why virtual environments are important)</li>
+            </ul>
+          </div>
+          
+          <div class="space-y-4">
+            <h3>virtualenv - Virtual Environments</h3>
+            <p>
+              Virtual environments create isolated Python environments for projects, allowing different projects to have different dependencies.
+            </p>
+            
+            <div class="code-block">
+              <div class="code-header">
+                <svg class="code-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="16 18 22 12 16 6"></polyline>
+                  <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+                <div class="text-sm font-medium">Working with Virtual Environments</div>
+              </div>
+              <div class="code-content">
+                <pre><code># Install virtualenv (if not already installed)
+pip install virtualenv
+
+# Create a virtual environment
+virtualenv myenv
+
+# On Windows, activate the virtual environment
+myenv\Scripts\activate
+
+# On macOS/Linux, activate the virtual environment
+source myenv/bin/activate
+
+# Your terminal prompt should change to show the active environment
+# (myenv) $
+
+# Install packages (they'll be isolated to this environment)
+pip install numpy pandas
+
+# Deactivate the virtual environment when done
+deactivate
+
+# Using Python's built-in venv module (Python 3.3+)
+python -m venv myenv
+
+# The activation commands are the same as with virtualenv</code></pre>
+              </div>
+            </div>
+            
+            <p>Benefits of virtual environments:</p>
+            <ul>
+              <li>Isolate dependencies for different projects</li>
+              <li>Avoid version conflicts between packages</li>
+              <li>Test applications with different Python versions</li>
+              <li>Keep your global Python installation clean</li>
+              <li>Make projects reproducible across different machines</li>
+            </ul>
+            
+            <div class="bg-muted p-4 rounded-lg mt-4">
+              <h4 class="font-semibold">Modern Alternatives</h4>
+              <p class="mt-2">
+                While virtualenv is still widely used, there are modern alternatives:
+              </p>
+              <ul class="mt-2">
+                <li><strong>venv</strong>: Built into Python 3.3+ (use with <code>python -m venv</code>)</li>
+                <li><strong>conda</strong>: Package and environment manager, popular in data science</li>
+                <li><strong>pipenv</strong>: Combines pip and virtualenv functionality</li>
+                <li><strong>poetry</strong>: Modern dependency management and packaging</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Daily Task Section -->
+      <section id="daily-task" class="space-y-6 bg-muted p-6 rounded-lg">
+        <h2>Daily Task</h2>
+        <p class="text-lg">
+          Write a Python script to take user input and print a response.
+        </p>
+        
+        <div class="space-y-4">
+          <p>
+            For today's task, you'll create a simple interactive Python script that:
+          </p>
+          <ol>
+            <li>Asks the user for their name</li>
+            <li>Asks the user for their age</li>
+            <li>Asks the user for their favorite programming language</li>
+            <li>Prints a personalized response based on their inputs</li>
+          </ol>
+          
+          <div class="code-block bg-background">
+            <div class="code-header">
+              <svg class="code-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+              <div class="text-sm font-medium">Example Solution</div>
+            </div>
+            <div class="code-content">
+              <pre><code># Daily Task: User Input and Response
+
+def get_user_input():
+    """Get input from the user and return as a dictionary"""
+    name = input("What is your name? ")
+    
+    # Use a loop to ensure we get a valid age
+    while True:
+        try:
+            age = int(input("How old are you? "))
+            break  # Exit the loop if conversion to int succeeds
+        except ValueError:
+            print("Please enter a valid number for your age.")
+    
+    language = input("What's your favorite programming language? ")
+    
+    return {
+        "name": name,
+        "age": age,
+        "language": language
+    }
+
+def generate_response(user_data):
+    """Generate a personalized response based on user data"""
+    name = user_data["name"]
+    age = user_data["age"]
+    language = user_data["language"]
+    
+    # Create different responses based on the data
+    response = f"Nice to meet you, {name}! "
+    
+    if age < 18:
+        response += "You're quite young to be programming already! "
+    elif age < 30:
+        response += "You're at a great age for learning programming. "
+    else:
+        response += "It's never too late to code! "
+    
+    if language.lower() == "python":
+        response += "I see you have excellent taste in programming languages! Python is my favorite too."
+    else:
+        response += f"{language} is a great language! Have you considered trying Python as well?"
+    
+    return response
+
+def main():
+    print("Welcome to the Python Interaction Program!")
+    print("----------------------------------------")
+    
+    # Get user input
+    user_data = get_user_input()
+    
+    # Generate and display response
+    response = generate_response(user_data)
+    print("\nResponse:")
+    print(response)
+    
+    # Additional information based on age
+    years_coding = user_data["age"] - 10
+    if years_coding > 0:
+        print(f"\nIf you started coding at age 10, you could have {years_coding} years of experience by now!")
+
+if __name__ == "__main__":
+    main()</code></pre>
+            </div>
+          </div>
+          
+          <div class="bg-primary-light p-4 rounded-lg">
+            <h4 class="font-semibold">Challenge Extensions:</h4>
+            <ul class="mt-2">
+              <li>Add error handling for invalid inputs</li>
+              <li>Use a dictionary to store different responses for different programming languages</li>
+              <li>Ask additional questions and create a more complex response</li>
+              <li>Save the user's information to a file for future reference</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      
+
+  <script>
+    // Simple JavaScript for tab functionality
+    function showTab(tabId) {
+      // Hide all tab contents
+      const tabContents = document.querySelectorAll('.tab-content');
+      tabContents.forEach(content => {
+        content.classList.remove('active');
+      });
+      
+      // Deactivate all tab triggers
+      const tabTriggers = document.querySelectorAll('.tab-trigger');
+      tabTriggers.forEach(trigger => {
+        trigger.classList.remove('active');
+      });
+      
+      // Show the selected tab content
+      document.getElementById(tabId).classList.add('active');
+      
+      // Activate the clicked tab trigger
+      event.currentTarget.classList.add('active');
+    }
+  </script>
+</body>
+</html>
